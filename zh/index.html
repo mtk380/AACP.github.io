@@ -10,114 +10,176 @@
     />
     <style>
       :root {
-        color-scheme: light dark;
+        color-scheme: light;
+        --bg: #eef3ff;
+        --panel: rgba(255, 255, 255, 0.88);
+        --panel-border: rgba(148, 163, 184, 0.3);
+        --text-main: #0f172a;
+        --text-muted: #475569;
+        --brand: #2563eb;
+        --shadow: 0 18px 44px rgba(15, 23, 42, 0.11);
       }
       * {
         box-sizing: border-box;
       }
       body {
         margin: 0;
-        background: #f6f8fa;
-        color: #24292f;
+        background:
+          radial-gradient(circle at 20% 10%, rgba(147, 197, 253, 0.36), transparent 32%),
+          radial-gradient(circle at 86% 20%, rgba(129, 140, 248, 0.2), transparent 30%),
+          var(--bg);
+        color: var(--text-main);
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
       }
       .layout {
         display: grid;
-        grid-template-columns: 320px 1fr;
+        grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
         min-height: 100vh;
+        gap: 14px;
+        padding: 14px;
       }
       .sidebar {
-        border-right: 1px solid #d0d7de;
-        background: #ffffff;
-        padding: 20px 14px 16px;
+        border: 1px solid var(--panel-border);
+        background: var(--panel);
+        border-radius: 18px;
+        padding: 18px 12px 14px;
         position: sticky;
-        top: 0;
-        max-height: 100vh;
+        top: 14px;
+        max-height: calc(100vh - 28px);
         overflow: auto;
+        box-shadow: var(--shadow);
       }
       .brand {
         margin: 0;
-        font-size: 22px;
+        font-size: 24px;
+        letter-spacing: -0.02em;
+      }
+      .brand-note {
+        margin: 8px 0 14px;
+        color: var(--text-muted);
+        font-size: 13px;
+        line-height: 1.55;
       }
       .sidebar-title {
-        margin: 14px 0 8px;
-        font-size: 14px;
-        color: #57606a;
+        margin: 0 0 8px;
+        font-size: 13px;
+        color: var(--text-muted);
       }
       .toc {
         list-style: none;
         margin: 0;
         padding: 0;
         display: grid;
-        gap: 4px;
+        gap: 6px;
       }
       .toc-link {
         display: block;
-        border-radius: 8px;
-        padding: 8px 10px;
+        border-radius: 10px;
+        padding: 9px 11px;
         line-height: 1.4;
-        color: #24292f;
+        color: #1f2937;
         text-decoration: none;
-        font-size: 15px;
+        font-size: 14px;
+        border: 1px solid transparent;
+        transition: all 0.16s ease;
       }
       .toc-link:hover {
-        background: #f3f4f6;
+        background: rgba(37, 99, 235, 0.08);
+        border-color: rgba(37, 99, 235, 0.22);
+        transform: translateX(2px);
       }
       .toc-link.active {
-        background: #ddf4ff;
-        color: #0969da;
-        font-weight: 600;
+        background: linear-gradient(135deg, rgba(219, 234, 254, 0.95), rgba(224, 242, 254, 0.95));
+        color: #1d4ed8;
+        font-weight: 700;
+        border-color: rgba(37, 99, 235, 0.25);
       }
       .content-wrap {
         min-width: 0;
       }
       .toolbar {
         position: sticky;
-        top: 0;
-        z-index: 5;
-        background: #ffffff;
-        border-bottom: 1px solid #d0d7de;
+        top: 14px;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.86);
+        border: 1px solid var(--panel-border);
+        border-radius: 14px;
+        backdrop-filter: blur(8px);
         display: flex;
         align-items: center;
-        gap: 12px;
-        padding: 10px 16px;
+        justify-content: space-between;
+        gap: 8px 12px;
+        flex-wrap: wrap;
+        padding: 10px 14px;
+        margin-bottom: 14px;
       }
       .toolbar a {
-        color: #0969da;
+        color: #1d4ed8;
         text-decoration: none;
         font-size: 14px;
+        border: 1px solid rgba(37, 99, 235, 0.24);
+        border-radius: 999px;
+        padding: 6px 11px;
+        background: rgba(255, 255, 255, 0.65);
+        transition: all 0.16s ease;
       }
       .toolbar a:hover {
-        text-decoration: underline;
+        background: rgba(37, 99, 235, 0.12);
       }
       .meta {
-        color: #57606a;
-        font-size: 13px;
+        color: var(--text-muted);
+        font-size: 12px;
+        background: rgba(226, 232, 240, 0.55);
+        border-radius: 999px;
+        padding: 6px 10px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        max-width: 100%;
       }
       .markdown-body {
         max-width: 1100px;
-        margin: 20px auto;
-        padding: 24px 28px;
+        margin: 0 auto 18px;
+        padding: 28px 32px;
         background: #ffffff;
-        border: 1px solid #d0d7de;
+        border: 1px solid var(--panel-border);
+        border-radius: 18px;
+        box-shadow: 0 14px 36px rgba(15, 23, 42, 0.08);
+        line-height: 1.8;
+      }
+      .markdown-body img {
         border-radius: 10px;
+      }
+      .markdown-body pre {
+        border-radius: 10px;
+      }
+      .markdown-body blockquote {
+        border-left-color: #60a5fa;
+      }
+      .toolbar-links {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
       }
       @media (max-width: 980px) {
         .layout {
           grid-template-columns: 1fr;
+          gap: 10px;
+          padding: 10px;
         }
         .sidebar {
           position: static;
           max-height: none;
-          border-right: 0;
-          border-bottom: 1px solid #d0d7de;
+          top: auto;
         }
         .markdown-body {
-          margin: 12px;
-          padding: 16px;
+          margin: 0;
+          padding: 18px 16px;
+          border-radius: 14px;
+        }
+        .toolbar {
+          top: 10px;
         }
       }
     </style>
@@ -126,16 +188,18 @@
     <div class="layout">
       <aside class="sidebar">
         <h1 class="brand">AACP 白皮书</h1>
-
+        <p class="brand-note">中文章节阅读 · GitBook 风格导航</p>
         <h2 class="sidebar-title">章节列表</h2>
         <ul class="toc" id="toc"></ul>
       </aside>
 
       <main class="content-wrap">
         <div class="toolbar">
-          <a href="../">语言选择</a>
-          <a href="../en/">English</a>
-          <a id="repoLink" target="_blank" rel="noreferrer">在 GitHub 查看当前文件</a>
+          <div class="toolbar-links">
+            <a href="../">语言选择</a>
+            <a href="../en/">English</a>
+            <a id="repoLink" target="_blank" rel="noreferrer">在 GitHub 查看当前文件</a>
+          </div>
           <span class="meta" id="meta"></span>
         </div>
         <article class="markdown-body" id="content">加载中...</article>

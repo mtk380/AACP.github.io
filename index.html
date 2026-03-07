@@ -6,7 +6,15 @@
     <title>AACP 白皮书入口</title>
     <style>
       :root {
-        color-scheme: light dark;
+        color-scheme: light;
+        --bg: #f3f6ff;
+        --panel: rgba(255, 255, 255, 0.88);
+        --panel-border: rgba(119, 138, 182, 0.2);
+        --text-main: #0f172a;
+        --text-muted: #475569;
+        --brand: #2563eb;
+        --brand-2: #1d4ed8;
+        --shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
       }
       * {
         box-sizing: border-box;
@@ -14,73 +22,127 @@
       body {
         margin: 0;
         min-height: 100vh;
-        display: grid;
-        place-items: center;
-        background: #f6f8fa;
-        color: #24292f;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 28px 16px;
+        background:
+          radial-gradient(circle at 10% 10%, rgba(147, 197, 253, 0.45), transparent 42%),
+          radial-gradient(circle at 90% 20%, rgba(129, 140, 248, 0.35), transparent 34%),
+          radial-gradient(circle at 70% 90%, rgba(186, 230, 253, 0.38), transparent 38%),
+          var(--bg);
+        color: var(--text-main);
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
       }
       .container {
-        width: min(920px, calc(100vw - 32px));
-        background: #fff;
-        border: 1px solid #d0d7de;
-        border-radius: 14px;
-        padding: 24px;
-        box-shadow: 0 8px 26px rgba(31, 35, 40, 0.08);
+        width: min(980px, 100%);
+        padding: 30px;
+        border-radius: 22px;
+        background: var(--panel);
+        border: 1px solid var(--panel-border);
+        backdrop-filter: blur(8px);
+        box-shadow: var(--shadow);
+      }
+      .hero {
+        margin-bottom: 20px;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 12px;
+        color: var(--brand-2);
+        background: rgba(37, 99, 235, 0.12);
       }
       h1 {
         margin: 0;
-        font-size: 32px;
+        margin-top: 10px;
+        font-size: clamp(28px, 4vw, 38px);
+        letter-spacing: -0.03em;
       }
       .subtitle {
-        margin: 8px 0 22px;
-        color: #57606a;
-        line-height: 1.6;
+        margin: 10px 0 0;
+        color: var(--text-muted);
+        line-height: 1.7;
+        max-width: 760px;
       }
       .grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
+        gap: 16px;
       }
       .card {
-        border: 1px solid #d0d7de;
-        border-radius: 12px;
-        padding: 16px;
+        border: 1px solid rgba(148, 163, 184, 0.25);
+        border-radius: 18px;
+        padding: 18px;
+        background: rgba(255, 255, 255, 0.74);
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
       }
       .card h2 {
-        margin: 0 0 8px;
-        font-size: 20px;
+        margin: 0;
+        font-size: 22px;
       }
       .card p {
-        margin: 0 0 14px;
-        color: #57606a;
+        margin: 8px 0 14px;
+        color: var(--text-muted);
+      }
+      .card ul {
+        margin: 0 0 16px;
+        padding-left: 18px;
+        color: #334155;
+        line-height: 1.6;
+      }
+      .card ul li {
+        margin-bottom: 6px;
       }
       .button {
-        display: inline-block;
-        padding: 9px 12px;
-        border-radius: 8px;
-        background: #0969da;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 150px;
+        padding: 10px 14px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--brand), var(--brand-2));
         color: #fff;
         text-decoration: none;
         font-size: 14px;
+        font-weight: 600;
+        transition: transform 0.16s ease, box-shadow 0.16s ease;
       }
       .button:hover {
-        opacity: 0.92;
+        transform: translateY(-1px);
+        box-shadow: 0 8px 18px rgba(37, 99, 235, 0.3);
       }
       .links {
-        margin-top: 16px;
+        margin-top: 18px;
         font-size: 14px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+        color: var(--text-muted);
       }
       .links a {
-        color: #0969da;
+        color: var(--brand-2);
         text-decoration: none;
       }
       .links a:hover {
         text-decoration: underline;
       }
       @media (max-width: 780px) {
+        body {
+          padding: 18px 12px;
+        }
+        .container {
+          padding: 20px;
+          border-radius: 16px;
+        }
         .grid {
           grid-template-columns: 1fr;
+        }
+        .button {
+          width: 100%;
         }
       }
     </style>
@@ -104,26 +166,39 @@
   </head>
   <body>
     <main class="container">
-      <h1>AACP Whitepaper / AACP 白皮书</h1>
-      <p class="subtitle">
-        请选择阅读语言入口。Choose your preferred language entry.
-      </p>
+      <header class="hero">
+        <span class="badge">AACP Docs Hub</span>
+        <h1>AACP Whitepaper / AACP 白皮书</h1>
+        <p class="subtitle">
+          请选择阅读语言入口；两套内容分别使用独立路径和阅读器。Choose your preferred language portal, each with its own routed reader.
+        </p>
+      </header>
       <section class="grid">
         <article class="card">
           <h2>中文</h2>
-          <p>章节化阅读、侧边目录、Markdown 内链与图片自动处理。</p>
+          <p>面向中文读者的章节阅读体验。</p>
+          <ul>
+            <li>侧边目录 + 章节高亮</li>
+            <li>Markdown 内链自动跳转</li>
+            <li>图片路径自动解析</li>
+          </ul>
           <a class="button" href="./zh/">进入中文版</a>
         </article>
         <article class="card">
           <h2>English</h2>
-          <p>Structured chapter reader with TOC, in-document links, and image resolving.</p>
+          <p>Structured reading flow for English audiences.</p>
+          <ul>
+            <li>Chapter navigation and active tracking</li>
+            <li>In-document markdown links rewritten</li>
+            <li>Relative image source normalization</li>
+          </ul>
           <a class="button" href="./en/">Open English Version</a>
         </article>
       </section>
       <div class="links">
         <a href="./zh/?file=gitbook-zh/01-executive-summary.md">中文默认章节</a>
-        ·
         <a href="./en/?file=gitbook-en/01-executive-summary.md">English default chapter</a>
+        <a href="./reader.html">兼容入口 / Legacy Reader Redirect</a>
       </div>
     </main>
   </body>
