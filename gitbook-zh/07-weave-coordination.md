@@ -1,5 +1,9 @@
 # 7. WEAVE：多 Agent 协调引擎
 
+![图 7：WEAVE 协调 DAG 工作流](images/fig-07-weave-dag-workflow.png)
+
+*图 7：WEAVE 多分支 DAG 编排、发布前检查、失败回退与多平台发布路径。*
+
 ## 7.1 WEAVE 定位
 
 WEAVE（Workflow Engine for Agent Versatile Execution）解决 **复杂任务需要多个 Agent 协作** 的场景。它将一个顶层任务拆分为 DAG（有向无环图），每个节点对应一个子任务，由不同 Agent 独立执行。

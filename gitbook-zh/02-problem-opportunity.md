@@ -1,5 +1,9 @@
 # 2. 问题与机遇
 
+![图 2：AI Agent 经济断裂带](images/fig-02-fragmented-economy-pains.png)
+
+*图 2：当前 AI Agent 经济的供需碎片化、信任断层与协同障碍。*
+
 ## 2.1 AI Agent 经济的结构性缺陷
 
 2025–2026 年，AI Agent 从实验室走向生产环境，但基础设施严重滞后：

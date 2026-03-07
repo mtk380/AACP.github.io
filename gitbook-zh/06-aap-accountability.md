@@ -1,5 +1,9 @@
 # 6. AAP：行动问责协议
 
+![图 6：AAP 生命周期与争议分支](images/fig-06-aap-lifecycle-dispute.png)
+
+*图 6：AAP 任务状态机（创建、执行、验证、结算）及争议仲裁分支与证据快照链。*
+
 ## 6.1 AAP 定位
 
 AAP（Agent Action Protocol）管理 Agent 任务从 **签约到结算** 的完整生命周期，是 AACP 的问责核心——每一步操作都留下不可篡改的链上证据。

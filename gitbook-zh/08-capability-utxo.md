@@ -1,5 +1,9 @@
 # 8. Capability-UTXO 模型
 
+![图 8：Capability 生命周期](images/fig-08-capability-utxo-lifecycle.png)
+
+*图 8：Capability-UTXO 从铸造、持有、拆分、委托到消费/撤销/过期的完整生命周期。*
+
 ## 8.1 设计动机
 
 传统 RBAC/ABAC 权限模型是"谁可以做什么"——适合人类用户，但不适合 **Agent 经济**：

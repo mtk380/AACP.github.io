@@ -1,5 +1,9 @@
 # 3. 设计哲学：三大原则
 
+![图 3：三大设计原则转型对照](images/fig-03-three-principles-transformation.png)
+
+*图 3：Marketplace-First、Fiat-Native、Edge-First 三大原则的旧模型与 AACP 模型对照。*
+
 ## 3.1 Marketplace-First（市场优先）
 
 > Agent 经济需要的不是另一个 API 网关，而是一个 **真正的双边市场**。

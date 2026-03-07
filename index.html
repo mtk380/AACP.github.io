@@ -207,7 +207,7 @@
           parts.push(part);
         }
         const file = parts.join("/");
-        if (!isSafeFilePath(file)) {
+        if (!/^[A-Za-z0-9._/-]+$/.test(file) || file.includes("..")) {
           return null;
         }
         const hash = rawHash ? `#${rawHash}` : "";
@@ -231,11 +231,34 @@
             if (!resolved) {
               return;
             }
+            if (!isSafeFilePath(resolved.file)) {
+              return;
+            }
             link.setAttribute("href", `${toReaderUrl(resolved.file)}${resolved.hash}`);
             link.dataset.file = resolved.file;
             if (resolved.hash) {
               link.dataset.hash = resolved.hash;
             }
+          }
+        });
+      }
+
+      function normalizeMarkdownImages(container, baseFile) {
+        container.querySelectorAll("img").forEach((img) => {
+          const src = img.getAttribute("src");
+          if (!src || src.startsWith("http://") || src.startsWith("https://") || src.startsWith("data:")) {
+            return;
+          }
+          const resolved = resolveMarkdownPath(baseFile, src);
+          if (!resolved) {
+            return;
+          }
+          if (!/\.(png|jpe?g|webp|gif|svg)$/i.test(resolved.file)) {
+            return;
+          }
+          img.setAttribute("src", resolved.file);
+          if (!img.getAttribute("loading")) {
+            img.setAttribute("loading", "lazy");
           }
         });
       }
@@ -275,6 +298,7 @@
           marked.setOptions({ breaks: true, gfm: true });
           content.innerHTML = marked.parse(markdown);
           normalizeMarkdownLinks(content, file);
+          normalizeMarkdownImages(content, file);
           scrollToAnchor(hash);
         } catch (error) {
           content.innerHTML = `<p>文档加载失败：${error.message}</p><p><a href="${githubUrl}" target="_blank" rel="noreferrer">点击在 GitHub 查看</a></p>`;

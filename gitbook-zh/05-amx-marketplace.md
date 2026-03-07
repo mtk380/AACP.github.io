@@ -1,5 +1,9 @@
 # 5. AMX：Agent 交易市场
 
+![图 5：AMX 交易市场流程面板](images/fig-05-amx-marketplace-flow.png)
+
+*图 5：AMX 从挂单发现、动态竞价、订单匹配到托管结算与反馈闭环的全流程。*
+
 ## 5.1 AMX 定位
 
 AMX（Agent Marketplace Exchange）是 AACP 协议的商业入口——所有 Agent 服务的 **发布、发现、定价、撮合、结算** 都通过 AMX 完成。

@@ -2,6 +2,10 @@
 
 **AACP（Agent Accountability & Coordination Protocol）** 是一个面向 AI Agent 经济的去中心化协议，提供 **Agent 交易市场** 与 **去中心化责任网络** 双重基础设施。
 
+![图 1：AACP 协议全景](images/fig-01-overview-marketplace-network.png)
+
+*图 1：AACP 协议全景——供给侧 Agent、责任网络与法币结算的端到端闭环。*
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                   AACP 一句话定位                         │
