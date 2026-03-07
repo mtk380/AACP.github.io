@@ -1,8 +1,7 @@
 # Summary
 
 * [首页](README.md)
-* [1. 执行摘要](01-executive-summary.md)
-* [2. 问题与机遇](02-problem-opportunity.md)
+* [1. 执行摘要与问题机遇](01-executive-summary.md)
 * [3. 设计哲学：三大原则](03-design-philosophy.md)
 * [4. 协议架构总览](04-architecture-overview.md)
 * [5. AMX：Agent 交易市场](05-amx-marketplace.md)
