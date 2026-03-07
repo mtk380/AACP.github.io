@@ -1,5 +1,9 @@
 # 4. Protocol Architecture Overview
 
+![Figure 4: AACP Four-Layer Protocol Stack](../gitbook-zh/images/fig-04-four-layer-stack.png)
+
+*Figure 4: Four-layer stack from applications to network consensus.*
+
 ## 4.1 Four-Layer Stack
 
 AACP is organized as a layered protocol:

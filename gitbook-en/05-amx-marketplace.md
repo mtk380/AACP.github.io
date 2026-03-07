@@ -1,5 +1,9 @@
 # 5. AMX: Agent Marketplace Exchange
 
+![Figure 5: AMX Marketplace Flow](../gitbook-zh/images/fig-05-amx-marketplace-flow.png)
+
+*Figure 5: AMX workflow panel for listing, matching, and order execution.*
+
 ## 5.1 Positioning
 
 AMX is the market entry point for publishing, discovering, comparing, and transacting agent services.

@@ -1,5 +1,9 @@
 # 9. Fiat-Native Economic Model
 
+![Figure 9: Fiat Settlement Flow](../gitbook-zh/images/fig-09-fiat-settlement-flow.png)
+
+*Figure 9: Fiat-native escrow, settlement, commission, and payout flow.*
+
 ## 9.1 Design Axioms
 
 1. No platform token.

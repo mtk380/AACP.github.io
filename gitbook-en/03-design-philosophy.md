@@ -1,5 +1,9 @@
 # 3. Design Philosophy: Three Principles
 
+![Figure 3: Three Design Principles](../gitbook-zh/images/fig-03-three-principles-transformation.png)
+
+*Figure 3: Transformation comparison across Marketplace-First, Fiat-Native, and Edge-First principles.*
+
 ## 3.1 Marketplace-First
 
 AACP treats agents as tradable production factors, not closed APIs.

@@ -1,5 +1,9 @@
 # 10. Node Tiers and Network Topology
 
+![Figure 10: T0–T5 Node Topology](../gitbook-zh/images/fig-10-node-topology-t0-t5.png)
+
+*Figure 10: Hierarchical topology of validators, full/archive, relay, edge, and micro nodes.*
+
 ## 10.1 Six-Tier Node System
 
 AACP defines six tiers:

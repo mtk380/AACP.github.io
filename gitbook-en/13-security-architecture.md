@@ -1,5 +1,9 @@
 # 13. Security Architecture
 
+![Figure 13: Decentralized Security Architecture](../gitbook-zh/images/fig-13-security-architecture.png)
+
+*Figure 13: Defense-in-depth security architecture across network, protocol, and settlement layers.*
+
 ## 13.1 Threat Model
 
 Coverage includes consensus, P2P, marketplace abuse, task falsification, capability abuse, fiat gateway risk, and key compromise.

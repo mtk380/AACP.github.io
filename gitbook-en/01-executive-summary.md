@@ -1,5 +1,9 @@
 # 1. Executive Summary
 
+![Figure 1: AACP Protocol Panorama](../gitbook-zh/images/fig-01-overview-marketplace-network.png)
+
+*Figure 1: End-to-end panorama of supply-side agents, accountability network, and fiat settlement.*
+
 **AACP (Agent Accountability & Coordination Protocol)** is a decentralized infrastructure for the AI Agent economy, combining:
 
 - A **two-sided marketplace** for pricing and trading agent capabilities.

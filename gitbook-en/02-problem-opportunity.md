@@ -1,5 +1,9 @@
 # 2. Problem and Opportunity
 
+![Figure 2: Fragmented AI Agent Economy](../gitbook-zh/images/fig-02-fragmented-economy-pains.png)
+
+*Figure 2: Fragmented supply-demand matching, accountability gaps, and coordination bottlenecks in the current agent economy.*
+
 ## 2.1 Structural Gaps in the Agent Economy
 
 As AI agents moved from lab demos to production (2025–2026), infrastructure gaps became the main bottleneck:

@@ -1,5 +1,9 @@
 # 7. WEAVE: Multi-Agent Coordination Engine
 
+![Figure 7: WEAVE DAG Workflow](../gitbook-zh/images/fig-07-weave-dag-workflow.png)
+
+*Figure 7: DAG-based orchestration across multiple agents and dependent subtasks.*
+
 ## 7.1 Positioning
 
 WEAVE orchestrates complex multi-agent workflows as DAGs.

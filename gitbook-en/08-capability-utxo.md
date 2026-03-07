@@ -1,5 +1,9 @@
 # 8. Capability-UTXO Model
 
+![Figure 8: Capability Lifecycle](../gitbook-zh/images/fig-08-capability-utxo-lifecycle.png)
+
+*Figure 8: Capability-UTXO lifecycle from minting and delegation to revocation.*
+
 ## 8.1 Motivation
 
 AACP models capability rights as UTXO-like objects to get deterministic ownership transfer, delegation, and revocation semantics.

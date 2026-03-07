@@ -1,5 +1,9 @@
 # 11. Reputation System
 
+![Figure 11: Reputation Dashboard](../gitbook-zh/images/fig-11-reputation-dashboard.png)
+
+*Figure 11: Multi-dimensional reputation scoring and update indicators.*
+
 ## 11.1 Goals
 
 Reputation (`REP`) directly affects:

@@ -1,5 +1,9 @@
 # 6. AAP: Agent Action Protocol
 
+![Figure 6: AAP Lifecycle and Dispute Branches](../gitbook-zh/images/fig-06-aap-lifecycle-dispute.png)
+
+*Figure 6: Task lifecycle transitions with verification and dispute paths.*
+
 ## 6.1 Positioning
 
 AAP is the accountability layer for task execution in AACP.

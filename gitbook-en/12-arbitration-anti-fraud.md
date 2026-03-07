@@ -1,5 +1,9 @@
 # 12. Dispute Arbitration and Anti-Fraud
 
+![Figure 12: Three-Layer Arbitration Pipeline](../gitbook-zh/images/fig-12-arbitration-pipeline.png)
+
+*Figure 12: Escalation pipeline from automatic checks to full validator review.*
+
 ## 12.1 Three-Stage Arbitration
 
 AACP uses progressive escalation:
