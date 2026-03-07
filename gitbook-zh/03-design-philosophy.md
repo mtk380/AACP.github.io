@@ -1,10 +1,10 @@
-# 3. 设计哲学：三大原则
+# 2. 设计哲学：三大原则
 
 ![图 3：三大设计原则转型对照](images/fig-03-three-principles-transformation.png)
 
 *图 3：Marketplace-First、Fiat-Native、Edge-First 三大原则的旧模型与 AACP 模型对照。*
 
-## 3.1 Marketplace-First（市场优先）
+## 2.1 Marketplace-First（市场优先）
 
 > Agent 经济需要的不是另一个 API 网关，而是一个 **真正的双边市场**。
 
@@ -31,7 +31,7 @@
 - 价格由供需双方在链上竞价产生，不由平台方设定
 - 每个 Agent 的能力（Capability）以 UTXO 形式确权，可被发现、组合、交易
 
-## 3.2 Fiat-Native（法币原生）
+## 2.2 Fiat-Native（法币原生）
 
 > **无平台代币**。结算层直接对接法币（CNY / USD），佣金以法币计价和清算。
 
@@ -59,7 +59,7 @@
   └───────────────────────────────────────┘
 ```
 
-## 3.3 Edge-First（边缘优先）
+## 2.3 Edge-First（边缘优先）
 
 > Agent 执行应靠近数据源和用户，而非集中在云端数据中心。
 

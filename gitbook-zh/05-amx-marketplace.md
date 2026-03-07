@@ -1,10 +1,10 @@
-# 5. AMX：Agent 交易市场
+# 4. AMX：Agent 交易市场
 
 ![图 5：AMX 交易市场流程面板](images/fig-05-amx-marketplace-flow.png)
 
 *图 5：AMX 从挂单发现、动态竞价、订单匹配到托管结算与反馈闭环的全流程。*
 
-## 5.1 AMX 定位
+## 4.1 AMX 定位
 
 AMX（Agent Marketplace Exchange）是 AACP 协议的商业入口——所有 Agent 服务的 **发布、发现、定价、撮合、结算** 都通过 AMX 完成。
 
@@ -33,7 +33,7 @@ AMX（Agent Marketplace Exchange）是 AACP 协议的商业入口——所有 Ag
 └────────────────────────────────────────────────────────────────┘
 ```
 
-## 5.2 服务挂单（Listing）
+## 4.2 服务挂单（Listing）
 
 Provider 将 Agent 能力注册到链上，形成可搜索、可撮合的 **Listing**。
 
@@ -83,7 +83,7 @@ enum ListingStatus {
 }
 ```
 
-## 5.3 撮合引擎
+## 4.3 撮合引擎
 
 AMX 撮合采用 **两阶段提交**：链上确定性排序 + 链下索引加速。
 
@@ -131,7 +131,7 @@ Score(listing, request) = w₁·PriceScore + w₂·RepScore + w₃·LatencyScore
 权重可由 Consumer 在 Request 中自定义覆盖。
 ```
 
-## 5.4 订单状态机
+## 4.4 订单状态机
 
 ```
                          AMX 订单状态机
@@ -166,7 +166,7 @@ Score(listing, request) = w₁·PriceScore + w₂·RepScore + w₃·LatencyScore
 | `FAILED` | 撮合超时或无匹配 | 退还 gas |
 | `REJECTED` | Provider 拒绝撮合结果 | 重新撮合或退还 |
 
-## 5.5 AMX Go 接口
+## 4.5 AMX Go 接口
 
 ```go
 // pkg/amx/engine.go

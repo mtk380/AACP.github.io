@@ -1,10 +1,10 @@
-# 7. WEAVE：多 Agent 协调引擎
+# 6. WEAVE：多 Agent 协调引擎
 
 ![图 7：WEAVE 协调 DAG 工作流](images/fig-07-weave-dag-workflow.png)
 
 *图 7：WEAVE 多分支 DAG 编排、发布前检查、失败回退与多平台发布路径。*
 
-## 7.1 WEAVE 定位
+## 6.1 WEAVE 定位
 
 WEAVE（Workflow Engine for Agent Versatile Execution）解决 **复杂任务需要多个 Agent 协作** 的场景。它将一个顶层任务拆分为 DAG（有向无环图），每个节点对应一个子任务，由不同 Agent 独立执行。
 
@@ -39,7 +39,7 @@ WEAVE（Workflow Engine for Agent Versatile Execution）解决 **复杂任务需
   └─────────────────────────────────────────────────────────┘
 ```
 
-## 7.2 DAG 定义
+## 6.2 DAG 定义
 
 ```protobuf
 // aacp.v1.weave — DAG 定义
@@ -106,7 +106,7 @@ enum DAGStatus {
 }
 ```
 
-## 7.3 调度算法
+## 6.3 调度算法
 
 WEAVE 调度器执行 **拓扑排序 + 就绪队列** 策略：
 
@@ -144,7 +144,7 @@ WEAVE 调度器执行 **拓扑排序 + 就绪队列** 策略：
   └─────────────────────────────────────────────────────┘
 ```
 
-## 7.4 数据传递
+## 6.4 数据传递
 
 节点之间通过 **DataRef** 传递中间结果，小数据直接上链，大数据存 IPFS：
 
@@ -179,7 +179,7 @@ func NewDataRef(data []byte, mimeType string) *DataRef {
 }
 ```
 
-## 7.5 实际案例：电商商品上架 Agent 协作
+## 6.5 实际案例：电商商品上架 Agent 协作
 
 ```
   场景：商家上传一张商品图，WEAVE 编排 4 个 Agent 完成上架
@@ -241,7 +241,7 @@ result = weave.execute(dag, timeout_sec=30)
 print(f"页面: {result.output['html_url']}, 建议价: {result.output['price']}")
 ```
 
-## 7.6 WEAVE 容错策略
+## 6.6 WEAVE 容错策略
 
 | 故障类型 | 检测方式 | 恢复策略 |
 |---------|---------|---------|

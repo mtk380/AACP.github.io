@@ -1,10 +1,10 @@
-# 10. 节点分层与网络拓扑
+# 9. 节点分层与网络拓扑
 
 ![图 10：T0-T5 节点分层拓扑](images/fig-10-node-topology-t0-t5.png)
 
 *图 10：AACP T0–T5 六级节点分层与全球部署拓扑、延迟热力与职责分工。*
 
-## 10.1 六级节点体系
+## 9.1 六级节点体系
 
 AACP 网络由 **T0–T5 六级节点** 组成，每级承担不同职责：
 
@@ -42,7 +42,7 @@ AACP 网络由 **T0–T5 六级节点** 组成，每级承担不同职责：
      └─────────────────┘
 ```
 
-## 10.2 节点规格对照表
+## 9.2 节点规格对照表
 
 | 维度 | T0 Validator | T1 Full | T2 Archive | T3 Relay | T4 Edge | T5 Micro |
 |------|-------------|---------|-----------|---------|---------|---------|
@@ -58,7 +58,7 @@ AACP 网络由 **T0–T5 六级节点** 组成，每级承担不同职责：
 | **ABCI** | ✓ | ✓ | ✓ | ✗ | ✗ | ✗ |
 | **P2P 角色** | 种子节点 | 全网 Gossip | 被动同步 | 区域枢纽 | 叶子节点 | 叶子节点 |
 
-## 10.3 节点注册与发现
+## 9.3 节点注册与发现
 
 ```protobuf
 // aacp.v1.node — 节点注册
@@ -97,7 +97,7 @@ message HardwareSpec {
 }
 ```
 
-## 10.4 区域拓扑与路由
+## 9.4 区域拓扑与路由
 
 ```
   跨区域网络拓扑
@@ -124,7 +124,7 @@ message HardwareSpec {
     4. T3 维护服务目录缓存（TTL 60s）
 ```
 
-## 10.5 T0 Validator 选举
+## 9.5 T0 Validator 选举
 
 T0 Validator 采用 **保证金加权 + 信誉加权** 的选举机制（非 PoS 代币质押）：
 
@@ -205,7 +205,7 @@ func ElectValidators(candidates []Candidate, maxValidators int) ElectionResult {
 }
 ```
 
-## 10.6 节点配置示例
+## 9.6 节点配置示例
 
 ```toml
 # config/node.toml — T3 Relay 节点配置示例

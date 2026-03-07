@@ -1,10 +1,10 @@
-# 8. Capability-UTXO 模型
+# 7. Capability-UTXO 模型
 
 ![图 8：Capability 生命周期](images/fig-08-capability-utxo-lifecycle.png)
 
 *图 8：Capability-UTXO 从铸造、持有、拆分、委托到消费/撤销/过期的完整生命周期。*
 
-## 8.1 设计动机
+## 7.1 设计动机
 
 传统 RBAC/ABAC 权限模型是"谁可以做什么"——适合人类用户，但不适合 **Agent 经济**：
 
@@ -20,7 +20,7 @@
 > **核心思想**：Agent 的每一项能力是一个 **未花费的能力令牌（Capability-UTXO）**。
 > 授权 = 创建 UTXO，使用 = 花费 UTXO，撤销 = 销毁 UTXO。
 
-## 8.2 UTXO 结构
+## 7.2 UTXO 结构
 
 ```protobuf
 // aacp.v1.caputxo
@@ -59,7 +59,7 @@ enum UTXOStatus {
 }
 ```
 
-## 8.3 UTXO 生命周期
+## 7.3 UTXO 生命周期
 
 ```
               Capability-UTXO 生命周期
@@ -94,7 +94,7 @@ enum UTXOStatus {
     │                         │── status=REVOKED ────→ │
 ```
 
-## 8.4 派生与委托
+## 7.4 派生与委托
 
 Agent A 可以将自己持有的 Capability 部分地委托给 Agent B，形成 **派生 UTXO 树**：
 
@@ -184,7 +184,7 @@ func isSubset(child, parent []string) bool {
 }
 ```
 
-## 8.5 UTXO 集状态管理
+## 7.5 UTXO 集状态管理
 
 链上维护两个集合，存储在 IAVL 树中：
 
