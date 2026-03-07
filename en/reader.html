@@ -1,20 +1,19 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>跳转中...</title>
+    <title>Redirecting...</title>
     <script>
       const params = new URLSearchParams(window.location.search);
       const file = params.get("file");
       const normalized = file ? file.replace(/^\.?\//, "") : "";
       const isSafeFilePath = /^[A-Za-z0-9._/-]+$/.test(normalized) && !normalized.includes("..") && normalized.endsWith(".md");
-      const targetDir = normalized.startsWith("gitbook-en/") ? "en" : "zh";
-      const target = isSafeFilePath ? `./${targetDir}/?file=${encodeURIComponent(normalized)}` : "./";
+      const target = isSafeFilePath ? `./?file=${encodeURIComponent(normalized)}` : "./";
       window.location.replace(target);
     </script>
   </head>
   <body>
-    <p>正在跳转到阅读页，如果没有自动跳转，请返回 <a href="./">首页</a>。</p>
+    <p>Redirecting to the reader. If it does not open, go back to <a href="./">home</a>.</p>
   </body>
 </html>

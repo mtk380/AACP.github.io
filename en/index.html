@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AACP Whitepaper (English)</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.8.1/github-markdown.min.css"
+    />
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #f6f8fa;
+        color: #24292f;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        min-height: 100vh;
+      }
+      .sidebar {
+        border-right: 1px solid #d0d7de;
+        background: #ffffff;
+        padding: 20px 14px 16px;
+        position: sticky;
+        top: 0;
+        max-height: 100vh;
+        overflow: auto;
+      }
+      .brand {
+        margin: 0;
+        font-size: 22px;
+      }
+      .sidebar-title {
+        margin: 14px 0 8px;
+        font-size: 14px;
+        color: #57606a;
+      }
+      .toc {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 4px;
+      }
+      .toc-link {
+        display: block;
+        border-radius: 8px;
+        padding: 8px 10px;
+        line-height: 1.4;
+        color: #24292f;
+        text-decoration: none;
+        font-size: 15px;
+      }
+      .toc-link:hover {
+        background: #f3f4f6;
+      }
+      .toc-link.active {
+        background: #ddf4ff;
+        color: #0969da;
+        font-weight: 600;
+      }
+      .content-wrap {
+        min-width: 0;
+      }
+      .toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        background: #ffffff;
+        border-bottom: 1px solid #d0d7de;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 16px;
+      }
+      .toolbar a {
+        color: #0969da;
+        text-decoration: none;
+        font-size: 14px;
+      }
+      .toolbar a:hover {
+        text-decoration: underline;
+      }
+      .meta {
+        color: #57606a;
+        font-size: 13px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .markdown-body {
+        max-width: 1100px;
+        margin: 20px auto;
+        padding: 24px 28px;
+        background: #ffffff;
+        border: 1px solid #d0d7de;
+        border-radius: 10px;
+      }
+      @media (max-width: 980px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          position: static;
+          max-height: none;
+          border-right: 0;
+          border-bottom: 1px solid #d0d7de;
+        }
+        .markdown-body {
+          margin: 12px;
+          padding: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <h1 class="brand">AACP Whitepaper</h1>
+
+        <h2 class="sidebar-title">Chapters</h2>
+        <ul class="toc" id="toc"></ul>
+      </aside>
+
+      <main class="content-wrap">
+        <div class="toolbar">
+          <a href="../">Language</a>
+          <a href="../zh/">中文</a>
+          <a id="repoLink" target="_blank" rel="noreferrer">View current file on GitHub</a>
+          <span class="meta" id="meta"></span>
+        </div>
+        <article class="markdown-body" id="content">Loading...</article>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+      const CHAPTERS = [
+        ["1. Executive Summary", "gitbook-en/01-executive-summary.md"],
+        ["2. Problem and Opportunity", "gitbook-en/02-problem-opportunity.md"],
+        ["3. Design Philosophy", "gitbook-en/03-design-philosophy.md"],
+        ["4. Architecture Overview", "gitbook-en/04-architecture-overview.md"],
+        ["5. AMX: Agent Marketplace Exchange", "gitbook-en/05-amx-marketplace.md"],
+        ["6. AAP: Agent Action Protocol", "gitbook-en/06-aap-accountability.md"],
+        ["7. WEAVE: Coordination Engine", "gitbook-en/07-weave-coordination.md"],
+        ["8. Capability-UTXO Model", "gitbook-en/08-capability-utxo.md"],
+        ["9. Fiat-Native Economics", "gitbook-en/09-fiat-economics.md"],
+        ["10. Node Topology", "gitbook-en/10-node-topology.md"],
+        ["11. Reputation System", "gitbook-en/11-reputation-system.md"],
+        ["12. Arbitration and Anti-Fraud", "gitbook-en/12-arbitration-anti-fraud.md"],
+        ["13. Security Architecture", "gitbook-en/13-security-architecture.md"],
+        ["14. Tech Stack and Implementation", "gitbook-en/14-tech-stack-roadmap.md"],
+        ["15. Governance and Evolution", "gitbook-en/15-governance-evolution.md"],
+        ["16. Roadmap", "gitbook-en/16-roadmap.md"],
+        ["17. Conclusion", "gitbook-en/17-conclusion.md"],
+        ["Appendix A: Self-Check Report", "gitbook-en/appendix-a-self-check.md"],
+        ["Appendix B: Visual Prompt Library", "gitbook-en/appendix-b-prompts.md"]
+      ];
+
+      const toc = document.getElementById("toc");
+      const content = document.getElementById("content");
+      const meta = document.getElementById("meta");
+      const repoLink = document.getElementById("repoLink");
+      const query = new URLSearchParams(window.location.search);
+      const defaultFile = "gitbook-en/01-executive-summary.md";
+      let currentFile = query.get("file") || defaultFile;
+
+      function isSafeFilePath(path) {
+        return /^[A-Za-z0-9._/-]+$/.test(path) && !path.includes("..") && path.endsWith(".md");
+      }
+
+      function setActive(file) {
+        document.querySelectorAll("[data-file]").forEach((element) => {
+          element.classList.toggle("active", element.dataset.file === file);
+        });
+      }
+
+      function toReaderUrl(file) {
+        return `?file=${encodeURIComponent(file)}`;
+      }
+
+      function resolveMarkdownPath(baseFile, href) {
+        const [rawPath, rawHash] = href.split("#");
+        if (!rawPath) {
+          return null;
+        }
+        const baseDir = baseFile.includes("/") ? baseFile.slice(0, baseFile.lastIndexOf("/") + 1) : "";
+        const merged = rawPath.startsWith("/") ? rawPath.slice(1) : `${baseDir}${rawPath}`;
+        const parts = [];
+        for (const part of merged.split("/")) {
+          if (!part || part === ".") {
+            continue;
+          }
+          if (part === "..") {
+            if (!parts.length) {
+              return null;
+            }
+            parts.pop();
+            continue;
+          }
+          parts.push(part);
+        }
+        const file = parts.join("/");
+        if (!/^[A-Za-z0-9._/-]+$/.test(file) || file.includes("..")) {
+          return null;
+        }
+        const hash = rawHash ? `#${rawHash}` : "";
+        return { file, hash };
+      }
+
+      function buildToc() {
+        toc.innerHTML = CHAPTERS.map(([title, file]) => {
+          return `<li><a class="toc-link" data-file="${file}" href="${toReaderUrl(file)}">${title}</a></li>`;
+        }).join("");
+      }
+
+      function normalizeMarkdownLinks(container, baseFile) {
+        container.querySelectorAll("a").forEach((link) => {
+          const href = link.getAttribute("href");
+          if (!href || href.startsWith("#") || href.startsWith("http://") || href.startsWith("https://")) {
+            return;
+          }
+          if (href.includes(".md")) {
+            const resolved = resolveMarkdownPath(baseFile, href);
+            if (!resolved) {
+              return;
+            }
+            if (!isSafeFilePath(resolved.file)) {
+              return;
+            }
+            link.setAttribute("href", `${toReaderUrl(resolved.file)}${resolved.hash}`);
+            link.dataset.file = resolved.file;
+            if (resolved.hash) {
+              link.dataset.hash = resolved.hash;
+            }
+          }
+        });
+      }
+
+      function normalizeMarkdownImages(container, baseFile) {
+        container.querySelectorAll("img").forEach((img) => {
+          const src = img.getAttribute("src");
+          if (!src || src.startsWith("http://") || src.startsWith("https://") || src.startsWith("data:")) {
+            return;
+          }
+          const resolved = resolveMarkdownPath(baseFile, src);
+          if (!resolved) {
+            return;
+          }
+          if (!/\.(png|jpe?g|webp|gif|svg)$/i.test(resolved.file)) {
+            return;
+          }
+          img.setAttribute("src", `../${resolved.file}`);
+          if (!img.getAttribute("loading")) {
+            img.setAttribute("loading", "lazy");
+          }
+        });
+      }
+
+      function scrollToAnchor(hash) {
+        if (!hash || !hash.startsWith("#")) {
+          return;
+        }
+        const id = decodeURIComponent(hash.slice(1));
+        const target = document.getElementById(id);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+
+      async function loadMarkdown(file, pushState, hash = "") {
+        if (!isSafeFilePath(file)) {
+          meta.textContent = "Invalid file path";
+          content.textContent = "The file path is invalid.";
+          return;
+        }
+        currentFile = file;
+        if (pushState) {
+          window.history.pushState({ file, hash }, "", `${toReaderUrl(file)}${hash}`);
+        }
+        setActive(file);
+        meta.textContent = `Current document: ${file}`;
+        const githubUrl = `https://github.com/mtk380/AACP.github.io/blob/main/${file}`;
+        repoLink.href = githubUrl;
+
+        try {
+          const response = await fetch(`../${file}`);
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+          }
+          const markdown = await response.text();
+          marked.setOptions({ breaks: true, gfm: true });
+          content.innerHTML = marked.parse(markdown);
+          normalizeMarkdownLinks(content, file);
+          normalizeMarkdownImages(content, file);
+          scrollToAnchor(hash);
+        } catch (error) {
+          content.innerHTML = `<p>Failed to load document: ${error.message}</p><p><a href="${githubUrl}" target="_blank" rel="noreferrer">Open on GitHub</a></p>`;
+        }
+      }
+
+      buildToc();
+
+      document.addEventListener("click", (event) => {
+        const link = event.target.closest("a[data-file]");
+        if (!link) {
+          return;
+        }
+        event.preventDefault();
+        const file = link.dataset.file;
+        const hash = link.dataset.hash || "";
+        loadMarkdown(file, true, hash);
+      });
+
+      window.addEventListener("popstate", () => {
+        const file = new URLSearchParams(window.location.search).get("file") || defaultFile;
+        const hash = window.location.hash || "";
+        loadMarkdown(file, false, hash);
+      });
+
+      loadMarkdown(currentFile, false, window.location.hash || "");
+    </script>
+  </body>
+</html>

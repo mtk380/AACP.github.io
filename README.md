@@ -1,17 +1,21 @@
-# AACP 中文白皮书
+# AACP 白皮书站点（中英双语）
 
-本仓库用于发布 AACP 中文白皮书内容，并支持通过 GitHub Pages 访问。
+本仓库用于发布 AACP 白皮书内容，并通过 GitHub Pages 提供中英文分路径访问。
 
 ## 在线地址
 
 - 项目站点：<https://mtk380.github.io/AACP.github.io/>
-- 文档阅读器：<https://mtk380.github.io/AACP.github.io/reader.html?file=AACP_WHITEPAPER.md>
+- 中文入口：<https://mtk380.github.io/AACP.github.io/zh/>
+- 英文入口：<https://mtk380.github.io/AACP.github.io/en/>
+- 兼容入口（自动分流）：<https://mtk380.github.io/AACP.github.io/reader.html>
 
 ## 仓库阅读入口
 
 - 完整版（单文件）：[`AACP_WHITEPAPER.md`](AACP_WHITEPAPER.md)
-- GitBook 章节版：[`gitbook-zh/README.md`](gitbook-zh/README.md)
-- 章节目录：[`gitbook-zh/SUMMARY.md`](gitbook-zh/SUMMARY.md)
+- 中文 GitBook：[`gitbook-zh/README.md`](gitbook-zh/README.md)
+- 英文 GitBook：[`gitbook-en/README.md`](gitbook-en/README.md)
+- 中文阅读页：[`zh/index.html`](zh/index.html)
+- 英文阅读页：[`en/index.html`](en/index.html)
 
 ## GitHub Pages 设置（按官方文档）
 

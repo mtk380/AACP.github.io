@@ -9,8 +9,7 @@
       const file = params.get("file");
       const normalized = file ? file.replace(/^\.?\//, "") : "";
       const isSafeFilePath = /^[A-Za-z0-9._/-]+$/.test(normalized) && !normalized.includes("..") && normalized.endsWith(".md");
-      const targetDir = normalized.startsWith("gitbook-en/") ? "en" : "zh";
-      const target = isSafeFilePath ? `./${targetDir}/?file=${encodeURIComponent(normalized)}` : "./";
+      const target = isSafeFilePath ? `./?file=${encodeURIComponent(normalized)}` : "./";
       window.location.replace(target);
     </script>
   </head>
