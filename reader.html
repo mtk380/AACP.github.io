@@ -3,104 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AACP 文档阅读器</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.8.1/github-markdown.min.css"
-    />
-    <style>
-      body {
-        margin: 0;
-        background: #f6f8fa;
-      }
-      .topbar {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        background: #ffffff;
-        border-bottom: 1px solid #d0d7de;
-        padding: 10px 16px;
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
-      }
-      .topbar a {
-        color: #0969da;
-        text-decoration: none;
-      }
-      .topbar a:hover {
-        text-decoration: underline;
-      }
-      .markdown-body {
-        box-sizing: border-box;
-        min-width: 200px;
-        max-width: 980px;
-        margin: 24px auto;
-        padding: 24px;
-        background: #ffffff;
-        border: 1px solid #d0d7de;
-        border-radius: 10px;
-      }
-      .meta {
-        color: #57606a;
-        font-size: 14px;
-      }
-      pre {
-        white-space: pre-wrap;
-      }
-      @media (max-width: 767px) {
-        .markdown-body {
-          padding: 16px;
-          margin: 12px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="topbar">
-      <a href="./">返回首页</a>
-      <a id="repoLink" target="_blank" rel="noreferrer">在 GitHub 中查看</a>
-      <span class="meta" id="meta"></span>
-    </div>
-    <article class="markdown-body" id="content">加载中...</article>
-
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <title>跳转中...</title>
     <script>
       const params = new URLSearchParams(window.location.search);
-      const file = params.get("file") || "AACP_WHITEPAPER.md";
-      const safe = /^[A-Za-z0-9._\-\/]+$/.test(file) && !file.includes("..");
-      const content = document.getElementById("content");
-      const meta = document.getElementById("meta");
-      const repoLink = document.getElementById("repoLink");
-      const githubUrl = `https://github.com/mtk380/AACP.github.io/blob/main/${file}`;
-      repoLink.href = githubUrl;
-      repoLink.textContent = file;
-
-      if (!safe || !file.endsWith(".md")) {
-        meta.textContent = "非法文件路径";
-        content.textContent = "参数 file 非法。";
-      } else {
-        meta.textContent = `当前文档：${file}`;
-        fetch(file)
-          .then((res) => {
-            if (!res.ok) {
-              throw new Error(`HTTP ${res.status}`);
-            }
-            return res.text();
-          })
-          .then((md) => {
-            if (window.marked) {
-              marked.setOptions({ breaks: true, gfm: true });
-              content.innerHTML = marked.parse(md);
-            } else {
-              content.innerHTML = `<pre>${md.replace(/</g, "&lt;")}</pre>`;
-            }
-          })
-          .catch((err) => {
-            content.innerHTML = `<p>文档加载失败：${err.message}</p><p><a href="${githubUrl}" target="_blank" rel="noreferrer">点击转到 GitHub 查看</a></p>`;
-          });
-      }
+      const file = params.get("file");
+      const target = file ? `./?file=${encodeURIComponent(file)}` : "./";
+      window.location.replace(target);
     </script>
+  </head>
+  <body>
+    <p>正在跳转到新阅读页，如果没有自动跳转，请返回 <a href="./">首页</a>。</p>
   </body>
 </html>
